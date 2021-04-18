@@ -41,28 +41,28 @@ const IndexDropdown = () => {
             "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
           }
         >
-          Admin Layout
+          user Layout
         </span>
         <Link
-          to="/admin/dashboard"
+          to="/app/dashboard"
           className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
         >
           Dashboard
         </Link>
         <Link
-          to="/admin/settings"
+          to="/app/settings"
           className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
         >
           Settings
         </Link>
         <Link
-          to="/admin/tables"
+          to="/app/tables"
           className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
         >
           Tables
         </Link>
         <Link
-          to="/admin/maps"
+          to="/app/maps"
           className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
         >
           Maps
