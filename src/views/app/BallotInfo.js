@@ -1,5 +1,8 @@
 import React from "react";
 
+import CardLineChart from 'components/Cards/CardLineChart.js';
+import CardBarChart from 'components/Cards/CardBarChart';
+
 export default function BallotInfo() {
   return (
     <>
@@ -9,7 +12,7 @@ export default function BallotInfo() {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2710&q=80')",
+                "url('https://www.freelogoservices.com/blog/wp-content/uploads/geometriccolor.jpg')",
             }}
           >
             <span
@@ -45,8 +48,10 @@ export default function BallotInfo() {
                   <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                     <div className="relative">
                       <img
+                        width="400"
+                        height="auto"
                         alt="..."
-                        src={require("assets/img/team-2-800x800.jpg").default}
+                        src={require("assets/img/account-r.png").default}
                         className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                       />
                     </div>
@@ -57,7 +62,7 @@ export default function BallotInfo() {
                         className="bg-lightBlue-500 active:bg-lightBlue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                         type="button"
                       >
-                        Connect
+                        Vote
                       </button>
                     </div>
                   </div>
@@ -65,10 +70,10 @@ export default function BallotInfo() {
                     <div className="flex justify-center py-4 lg:pt-4 pt-8">
                       <div className="mr-4 p-3 text-center">
                         <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                          22
+                          21
                         </span>
                         <span className="text-sm text-blueGray-400">
-                          Friends
+                          Day
                         </span>
                       </div>
                       <div className="mr-4 p-3 text-center">
@@ -76,15 +81,15 @@ export default function BallotInfo() {
                           10
                         </span>
                         <span className="text-sm text-blueGray-400">
-                          Photos
+                          Hour
                         </span>
                       </div>
                       <div className="lg:mr-4 p-3 text-center">
                         <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                          89
+                          33
                         </span>
                         <span className="text-sm text-blueGray-400">
-                          Comments
+                          Minute
                         </span>
                       </div>
                     </div>
@@ -92,40 +97,213 @@ export default function BallotInfo() {
                 </div>
                 <div className="text-center mt-12">
                   <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                    Jenna Stones
+                    Which brand of car should I buy?
                   </h3>
-                  <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-                    <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>{" "}
-                    Los Angeles, California
+                  <div className="text-sm leading-normal mt-0 mb-4 text-blueGray-400 font-bold uppercase">
+                    0x012321424212A12F1267F32423AA3438146572DE21
                   </div>
-                  <div className="mb-2 text-blueGray-600 mt-10">
-                    <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
-                    Solution Manager - Creative Tim Officer
-                  </div>
-                  <div className="mb-2 text-blueGray-600">
-                    <i className="fas fa-university mr-2 text-lg text-blueGray-400"></i>
-                    University of Computer Science
+                  <div className="block w-full overflow-x-auto">
+                    {/* Projects table */}
+                    <table className="items-center w-full bg-transparent border-collapse">
+                      <thead>
+                        <tr>
+                          <th
+                            className={
+                              "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-indigo-50 text-indigo-500 border-indigo-100"
+                            }
+                          >
+                            Options
+                </th>
+                          <th
+                            className={
+                              "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-indigo-800 text-indigo-300 border-indigo-700"
+                            }
+                          >
+                            Votes
+                </th>
+                          <th
+                            className={
+                              "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-indigo-800 text-indigo-300 border-indigo-700"
+                            }
+                          >
+                            Status
+                </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                            <img
+                              src={require("assets/img/bootstrap.jpg").default}
+                              className="h-12 w-12 bg-white rounded-full border"
+                              alt="..."
+                            ></img>{" "}
+                            <span
+                              className={
+                                "ml-3 font-bold text-blueGray-600"
+                              }
+                            >
+                              BMW
+                  </span>
+                          </th>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            2200
+                </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <div className="flex items-center">
+                              <span className="mr-2">60%</span>
+                              <div className="relative w-full">
+                                <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
+                                  <div
+                                    style={{ width: "60%" }}
+                                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                                  ></div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                            <img
+                              src={require("assets/img/angular.jpg").default}
+                              className="h-12 w-12 bg-white rounded-full border"
+                              alt="..."
+                            ></img>{" "}
+                            <span
+                              className={
+                                "ml-3 font-bold text-blueGray-600"
+                              }
+                            >
+                              Kia
+                  </span>
+                          </th>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            1800
+                </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <div className="flex items-center">
+                              <span className="mr-2">100%</span>
+                              <div className="relative w-full">
+                                <div className="overflow-hidden h-2 text-xs flex rounded bg-emerald-200">
+                                  <div
+                                    style={{ width: "100%" }}
+                                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"
+                                  ></div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                            <img
+                              src={require("assets/img/sketch.jpg").default}
+                              className="h-12 w-12 bg-white rounded-full border"
+                              alt="..."
+                            ></img>{" "}
+                            <span
+                              className={
+                                "ml-3 font-bold text-blueGray-600"
+                              }
+                            >
+                              Scoda
+                  </span>
+                          </th>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            3150
+                </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <div className="flex items-center">
+                              <span className="mr-2">73%</span>
+                              <div className="relative w-full">
+                                <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
+                                  <div
+                                    style={{ width: "73%" }}
+                                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                                  ></div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                            <img
+                              src={require("assets/img/react.jpg").default}
+                              className="h-12 w-12 bg-white rounded-full border"
+                              alt="..."
+                            ></img>{" "}
+                            <span
+                              className={
+                                "ml-3 font-bold text-blueGray-600"
+                              }
+                            >
+                              Renault
+                  </span>
+                          </th>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            4400
+                </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <div className="flex items-center">
+                              <span className="mr-2">90%</span>
+                              <div className="relative w-full">
+                                <div className="overflow-hidden h-2 text-xs flex rounded bg-teal-200">
+                                  <div
+                                    style={{ width: "90%" }}
+                                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-teal-500"
+                                  ></div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                            <img
+                              src={require("assets/img/vue.jpg").default}
+                              className="h-12 w-12 bg-white rounded-full border"
+                              alt="..."
+                            ></img>{" "}
+                            <span
+                              className={
+                                "ml-3 font-bold text-blueGray-600"
+                              }
+                            >
+                              Mercedes Benz
+                  </span>
+                          </th>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            5000
+                </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <div className="flex items-center">
+                              <span className="mr-2">100%</span>
+                              <div className="relative w-full">
+                                <div className="overflow-hidden h-2 text-xs flex rounded bg-emerald-200">
+                                  <div
+                                    style={{ width: "100%" }}
+                                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"
+                                  ></div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
                 <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
-                  <div className="flex flex-wrap justify-center">
-                    <div className="w-full lg:w-9/12 px-4">
-                      <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
-                        An artist of considerable range, Jenna the name taken by
-                        Melbourne-raised, Brooklyn-based Nick Murphy writes,
-                        performs and records all of his own music, giving it a
-                        warm, intimate feel with a solid groove structure. An
-                        artist of considerable range.
-                      </p>
-                      <a
-                        href="#pablo"
-                        className="font-normal text-lightBlue-500"
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        Show more
-                      </a>
-                    </div>
-                  </div>
+                <div className="flex flex-wrap">
+        <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
+          <CardLineChart />
+        </div>
+        <div className="w-full xl:w-12/12 px-4">
+          <CardBarChart />
+        </div>
+      </div>
                 </div>
               </div>
             </div>

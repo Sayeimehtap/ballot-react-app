@@ -14,6 +14,8 @@ import Dashboard from "views/app/Dashboard.js";
 import Settings from "views/app/Settings.js";
 import Tables from "views/app/Tables.js";
 import NewBallot from "views/app/NewBallot";
+import Ballots from "views/app/Ballots";
+import BallotInfo from "views/app/BallotInfo";
 
 export default function AppLayout() {
   return (
@@ -23,10 +25,11 @@ export default function AppLayout() {
         <AppNavbar />
         {/* Header */}
         <HeaderStats />
-        <div className="px-4 md:px-10 mx-auto w-full -m-24">
+        <div className="py-12 px-4 md:px-10 mx-auto w-full -m-24">
           <Switch>
             <Route path="/app/dashboard" exact component={Dashboard} />
-            <Route path="/app/ballots" exact component={Dashboard} />
+            <Route path="/app/ballots" exact component={Ballots} />
+            <Route path="/app/ballots/id" exact component={BallotInfo} />
             <Route path="/app/new-ballot" exact component={NewBallot} />
             <Route path="/app/settings" exact component={Settings} />
             <Route path="/app/tables" exact component={Tables} />
