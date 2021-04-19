@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Ballot() {
+export default function BallotInfo() {
   return (
     <>
       <main className="ballot-info-page">

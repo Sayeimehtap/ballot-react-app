@@ -7,7 +7,7 @@ import "assets/styles/tailwind.css";
 
 // layouts
 
-import App from "layouts/AppLayout.js";
+import AppLayout from "layouts/AppLayout.js";
 
 // views without layouts
 
@@ -18,12 +18,12 @@ ReactDOM.render(
   <BrowserRouter>
     <Switch>
       {/* add routes with layouts */}
-      <Route path="/app" component={App} />
+      <Route path="/app" component={AppLayout} />
       {/* add routes without layouts */}
-      <Route path="/landing" exact component={Landing} />
-      <Route path="/" exact component={Index} />
+      <Route path="/landing" exact component={Index} />
+      <Route path="/" exact component={Landing} />
       {/* add redirect for first page */}
-      <Redirect from="*" to="/landing" />
+      <Redirect from="*" to="/" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

@@ -4,7 +4,7 @@ import React from "react";
 
 import CardBallot from "components/Cards/CardBallot.js";
 
-export default function Ballots() {
+export default function Dashboard() {
   return (
     <>
       <div className="flex flex-wrap">

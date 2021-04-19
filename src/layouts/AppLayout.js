@@ -13,9 +13,9 @@ import FooterApp from "components/Footers/FooterApp.js";
 import Dashboard from "views/app/Dashboard.js";
 import Settings from "views/app/Settings.js";
 import Tables from "views/app/Tables.js";
-import BallotInfo from "views/Profile";
+import NewBallot from "views/app/NewBallot";
 
-export default function User() {
+export default function AppLayout() {
   return (
     <>
       <Sidebar />
@@ -25,12 +25,12 @@ export default function User() {
         <HeaderStats />
         <div className="px-4 md:px-10 mx-auto w-full -m-24">
           <Switch>
-            <Route path="app/dashboard" exact component={Dashboard} />
-            <Route path="app/ballots" exact component={Dashboard} />
-            <Route path="app/settings" exact component={Settings} />
-            <Route path="app/ballots/ballot-info" exact component={BallotInfo} />
-            <Route path="app/tables" exact component={Tables} />
-            <Redirect from="/" to="/app/dashboard" />
+            <Route path="/app/dashboard" exact component={Dashboard} />
+            <Route path="/app/ballots" exact component={Dashboard} />
+            <Route path="/app/new-ballot" exact component={NewBallot} />
+            <Route path="/app/settings" exact component={Settings} />
+            <Route path="/app/tables" exact component={Tables} />
+            <Redirect from="/app" to="/app/dashboard" />
           </Switch>
           <FooterApp />
         </div>
