@@ -1,18 +1,17 @@
-import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "assets/styles/tailwind.css";
+import "./assets/styles/tailwind.css";
 
 // layouts
 
-import AppLayout from "layouts/AppLayout.js";
+import AppLayout from "./layouts/AppLayout";
 
 // views without layouts
 
-import Landing from "views/Landing.js";
-import Index from "views/Index.js";
+import Landing from "./views/Landing";
+import Index from "./views/Index";
 
 ReactDOM.render(
   <BrowserRouter>

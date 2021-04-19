@@ -12,7 +12,7 @@ export default function CardAccount() {
               <div className="relative">
                 <img
                   alt="..."
-                  src={require("assets/img/random-account-image.jpeg").default}
+                  src={require("./../../assets/img/random-account-image.jpeg").default}
                   className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                 />
               </div>

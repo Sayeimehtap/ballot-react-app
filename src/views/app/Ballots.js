@@ -2,7 +2,7 @@ import React from "react";
 
 // components
 
-import CardBallot from "components/Cards/CardBallot.js";
+import CardBallot from "./../../components/Cards/CardBallot.js";
 
 export default function Dashboard() {
   return (

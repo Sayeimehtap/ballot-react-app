@@ -3,9 +3,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 // components
 
-import IndexDropdown from "components/Dropdowns/IndexDropdown.js";
+import IndexDropdown from "./../Dropdowns/IndexDropdown.js";
 
-export default function Navbar(props) {
+class IndexNavbar extends React.Component<any, any> {
+  // @ts-ignore
+  public render() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
@@ -100,3 +102,6 @@ export default function Navbar(props) {
     </>
   );
 }
+}
+
+export default IndexNavbar;

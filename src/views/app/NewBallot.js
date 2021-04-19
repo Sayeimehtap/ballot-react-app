@@ -2,7 +2,7 @@ import React from "react";
 
 // components
 
-import CardNewBallot from "components/Cards/CardNewBallot";
+import CardNewBallot from "./../../components/Cards/CardNewBallot";
 
 export default function NewBallot() {
   return (
