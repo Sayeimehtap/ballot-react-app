@@ -1,6 +1,8 @@
 import React from "react";
 
-export default function FooterApp() {
+class FooterApp extends React.Component<any, any> {
+  // @ts-ignore
+  public render() {
   return (
     <>
       <footer className="block py-4">
@@ -34,3 +36,6 @@ export default function FooterApp() {
     </>
   );
 }
+}
+
+export default FooterApp;

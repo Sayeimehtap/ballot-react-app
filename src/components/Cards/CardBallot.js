@@ -83,7 +83,7 @@ export default function CardBallot({ color }) {
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
-                    src={require("assets/img/bootstrap.jpg").default}
+                    src={require("./../../assets/img/bootstrap.jpg").default}
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{" "}
@@ -116,7 +116,7 @@ export default function CardBallot({ color }) {
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
-                    src={require("assets/img/angular.jpg").default}
+                    src={require("./../../assets/img/angular.jpg").default}
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{" "}
@@ -149,7 +149,7 @@ export default function CardBallot({ color }) {
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
-                    src={require("assets/img/sketch.jpg").default}
+                    src={require("./../../assets/img/sketch.jpg").default}
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{" "}
@@ -182,7 +182,7 @@ export default function CardBallot({ color }) {
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
-                    src={require("assets/img/react.jpg").default}
+                    src={require("./../../assets/img/react.jpg").default}
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{" "}
@@ -215,7 +215,7 @@ export default function CardBallot({ color }) {
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
-                    src={require("assets/img/vue.jpg").default}
+                    src={require("./../../assets/img/vue.jpg").default}
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{" "}

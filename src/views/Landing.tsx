@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 
 // components
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footers/Footer.js";
+import Navbar from "./../components/Navbars/AuthNavbar";
+import Footer from "./../components/Footers/Footer";
 
-export default function Landing() {
+class Landing extends React.Component<any, any> {
+  // @ts-ignore
+  public render() {
   return (
     <>
       <Navbar transparent />
@@ -276,7 +278,7 @@ export default function Landing() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={require("assets/img/team-1-800x800.jpg").default}
+                    src={require("./../assets/img/team-1-800x800.jpg").default}
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
@@ -311,7 +313,7 @@ export default function Landing() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={require("assets/img/team-2-800x800.jpg").default}
+                    src={require("./../assets/img/team-2-800x800.jpg").default}
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
@@ -340,7 +342,7 @@ export default function Landing() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={require("assets/img/team-3-800x800.jpg").default}
+                    src={require("./../assets/img/team-3-800x800.jpg").default}
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
@@ -375,7 +377,7 @@ export default function Landing() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={require("assets/img/team-4-470x470.png").default}
+                    src={require("./../assets/img/team-4-470x470.png").default}
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
@@ -539,8 +541,8 @@ export default function Landing() {
                         Message
                       </label>
                       <textarea
-                        rows="4"
-                        cols="80"
+                        rows={4}
+                        cols={80}
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                         placeholder="Type a message..."
                       />
@@ -564,3 +566,6 @@ export default function Landing() {
     </>
   );
 }
+}
+
+export default Landing;

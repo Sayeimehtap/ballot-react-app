@@ -4,10 +4,17 @@ import { Link } from "react-router-dom";
 
 // components
 
-import PagesDropdown from "components/Dropdowns/PagesDropdown.js";
-
-export default function Navbar(props) {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
+class AuthNavbar extends React.Component<any, any> {
+  // @ts-ignore
+  constructor(props) {
+    super(props);
+    this.state = {
+      navbarOpen: false, 
+      setNavbarOpen: false
+    };
+  }
+  public render() {
+  const { navbarOpen, setNavbarOpen } = this.state;
   return (
     <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
@@ -54,3 +61,6 @@ export default function Navbar(props) {
     </>
   );
 }
+}
+
+export default AuthNavbar;
