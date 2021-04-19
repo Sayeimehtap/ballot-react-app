@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Web3 from "web3";
 import Web3Modal from "web3modal";
 
@@ -213,14 +212,14 @@ const supportedChains = [
 ];
 
 function initWeb3(provider: any) {
-  const web3: any = new Web3(provider);
+  const web3 = new Web3(provider);
 
   web3.eth.extend({
     methods: [
       {
         name: "chainId",
         call: "eth_chainId",
-        outputFormatter: web3.utils.hexToNumber
+        outputFormatter: () => web3.utils.hexToNumber
       }
     ]
   });
@@ -257,17 +256,27 @@ class AppNavbar extends React.Component<any, any> {
 
     await this.subscribeProvider(provider);
 
-    const web3: any = initWeb3(provider);
+    const web3 = initWeb3(provider);
 
     const accounts = await web3.eth.getAccounts();
 
+    
+
     const address = accounts[0];
+    const balance = await web3.eth.getBalance(address);
+
+    const subBalance = Web3.utils.fromWei(balance, 'ether');
 
     const subAddress = `${String(address).slice(0,5)}...${String(address).slice(-5)}` ;
 
     const networkId = await web3.eth.net.getId();
 
-    const chainId = await web3.eth.chainId();
+    const chainId = await web3.eth.getChainId();
+
+    const chainData = supportedChains.filter(
+      (chain: any) => chain.chain_id === this.state.chainId
+    )[0];
+
 
     await this.setState({
       web3,
@@ -276,7 +285,10 @@ class AppNavbar extends React.Component<any, any> {
       address,
       subAddress,
       chainId,
-      networkId
+      balance,
+      subBalance,
+      networkId,
+      chainData
     });
     }
 
@@ -291,7 +303,12 @@ class AppNavbar extends React.Component<any, any> {
       provider.on("chainChanged", async (chainId: number) => {
         const { web3 } = this.state;
         const networkId = await web3.eth.net.getId();
-        await this.setState({ chainId, networkId });
+
+        const chainData = supportedChains.filter(
+          (chain: any) => chain.chain_id === this.state.chainId
+        )[0];
+
+        await this.setState({ chainData, chainId, networkId });
       });
   
       provider.on("networkChanged", async (networkId: number) => {
@@ -337,30 +354,26 @@ class AppNavbar extends React.Component<any, any> {
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
 
             <li className="flex items-center">
-              <Link to="/app/dashboard" >
                 <button
                   className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                   type="button"
-                > No Network
+                > { this.state.chainData?.name ?? 'No Network' }
                 </button>
-              </Link>
             </li>
 
             <li className="flex items-center">
-              <Link to="/app/dashboard" >
                 <button
                   className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                   type="button"
-                > { this.state.chainId ?? '' }
+                > { this.state.subBalance ?? 'Balance' }
                 </button>
-              </Link>
             </li>
             <li className="flex items-center">
                 <button
                   onClick={this.onConnect}
                   className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                   type="button"
-                > { this.state.subAddress ?? 'Connect' }
+                > { this.state.subAddress ?? 'Connect to a wallet' }
                 </button>
             </li>
           </ul>
