@@ -14,6 +14,8 @@ import Dashboard from "./../views/app/Dashboard";
 import Settings from "./../views/app/Settings";
 import Tables from "./../views/app/Tables";
 import NewBallot from "./../views/app/NewBallot";
+import Ballots from "../views/app/Ballots";
+import BallotInfo from "../views/app/BallotInfo";
 
 class AppLayout extends React.Component<any, any> {
   // @ts-ignore
@@ -28,7 +30,8 @@ class AppLayout extends React.Component<any, any> {
           <div className="px-4 md:px-10 mx-auto w-full -m-24">
             <Switch>
               <Route path="/app/dashboard" exact component={Dashboard} />
-              <Route path="/app/ballots" exact component={Dashboard} />
+              <Route path="/app/ballots" exact component={Ballots} />
+              <Route path="/app/ballots/id" exact component={BallotInfo} />
               <Route path="/app/new-ballot" exact component={NewBallot} />
               <Route path="/app/settings" exact component={Settings} />
               <Route path="/app/tables" exact component={Tables} />

@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import Web3 from "web3";
 import Web3Modal from "web3modal";
 
-import ConnectButton from "../Web3/ConnectButton";
-
 const INITIAL_STATE = {
   fetching: false,
   address: "",
@@ -265,6 +263,8 @@ class AppNavbar extends React.Component<any, any> {
 
     const address = accounts[0];
 
+    const subAddress = `${String(address).slice(0,5)}...${String(address).slice(-5)}` ;
+
     const networkId = await web3.eth.net.getId();
 
     const chainId = await web3.eth.chainId();
@@ -274,6 +274,7 @@ class AppNavbar extends React.Component<any, any> {
       provider,
       connected: true,
       address,
+      subAddress,
       chainId,
       networkId
     });
@@ -355,18 +356,12 @@ class AppNavbar extends React.Component<any, any> {
               </Link>
             </li>
             <li className="flex items-center">
-              <Link to="/app/dashboard" >
                 <button
                   onClick={this.onConnect}
                   className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                   type="button"
-                > { this.state.address ?? 'Connect' }
+                > { this.state.subAddress ?? 'Connect' }
                 </button>
-              </Link>
-            </li>
-
-            <li className="flex items-center">
-                <ConnectButton onClick={this.onConnect} />
             </li>
           </ul>
         </div>

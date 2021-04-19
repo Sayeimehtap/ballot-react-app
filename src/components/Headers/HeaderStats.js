@@ -2,11 +2,6 @@ import React from "react";
 
 // components
 
-<<<<<<< HEAD
-=======
-import CardStats from "./../Cards/CardStats.js";
-
->>>>>>> b662655d8ce97d693d7bb08b3d605317f3a2ef8d
 export default function HeaderStats() {
   return (
     <>

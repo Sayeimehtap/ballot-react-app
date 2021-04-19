@@ -7,9 +7,16 @@ import IndexDropdown from "./../Dropdowns/IndexDropdown.js";
 
 class IndexNavbar extends React.Component<any, any> {
   // @ts-ignore
+  constructor(props) {
+    super(props);
+    this.state ={
+      navbarOpen: false, 
+      setNavbarOpen: false
+    };
+  }
   public render() {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
-  return (
+    const { navbarOpen, setNavbarOpen } = this.state;
+    return (
     <>
       <nav className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">

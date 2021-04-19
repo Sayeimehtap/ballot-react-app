@@ -1,7 +1,7 @@
 import React from "react";
 
-import CardLineChart from 'components/Cards/CardLineChart.js';
-import CardBarChart from 'components/Cards/CardBarChart';
+import CardLineChart from "./../../components/Cards/CardLineChart";
+import CardBarChart from "./../../components/Cards/CardBarChart";
 
 export default function BallotInfo() {
   return (
@@ -51,7 +51,7 @@ export default function BallotInfo() {
                         width="400"
                         height="auto"
                         alt="..."
-                        src={require("assets/img/account-r.png").default}
+                        src={require("./../../assets/img/account-r.png").default}
                         className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                       />
                     </div>
@@ -134,7 +134,7 @@ export default function BallotInfo() {
                         <tr>
                           <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                             <img
-                              src={require("assets/img/bootstrap.jpg").default}
+                              src={require("./../../assets/img/bootstrap.jpg").default}
                               className="h-12 w-12 bg-white rounded-full border"
                               alt="..."
                             ></img>{" "}
@@ -166,7 +166,7 @@ export default function BallotInfo() {
                         <tr>
                           <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                             <img
-                              src={require("assets/img/angular.jpg").default}
+                              src={require("./../../assets/img/angular.jpg").default}
                               className="h-12 w-12 bg-white rounded-full border"
                               alt="..."
                             ></img>{" "}
@@ -198,7 +198,7 @@ export default function BallotInfo() {
                         <tr>
                           <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                             <img
-                              src={require("assets/img/sketch.jpg").default}
+                              src={require("./../../assets/img/sketch.jpg").default}
                               className="h-12 w-12 bg-white rounded-full border"
                               alt="..."
                             ></img>{" "}
@@ -230,7 +230,7 @@ export default function BallotInfo() {
                         <tr>
                           <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                             <img
-                              src={require("assets/img/react.jpg").default}
+                              src={require("./../../assets/img/react.jpg").default}
                               className="h-12 w-12 bg-white rounded-full border"
                               alt="..."
                             ></img>{" "}
@@ -262,7 +262,7 @@ export default function BallotInfo() {
                         <tr>
                           <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                             <img
-                              src={require("assets/img/vue.jpg").default}
+                              src={require("./../../assets/img/vue.jpg").default}
                               className="h-12 w-12 bg-white rounded-full border"
                               alt="..."
                             ></img>{" "}
