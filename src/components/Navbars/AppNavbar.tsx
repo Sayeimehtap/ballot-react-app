@@ -260,12 +260,10 @@ class AppNavbar extends React.Component<any, any> {
 
     const accounts = await web3.eth.getAccounts();
 
-    
-
     const address = accounts[0];
     const balance = await web3.eth.getBalance(address);
 
-    const subBalance = Web3.utils.fromWei(balance, 'ether');
+    const subBalance = Web3.utils.fromWei(balance, 'ether').slice(0,6);
 
     const subAddress = `${String(address).slice(0,5)}...${String(address).slice(-5)}` ;
 
@@ -353,6 +351,7 @@ class AppNavbar extends React.Component<any, any> {
 
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
 
+
             <li className="flex items-center">
                 <button
                   className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
@@ -365,7 +364,7 @@ class AppNavbar extends React.Component<any, any> {
                 <button
                   className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                   type="button"
-                > { this.state.subBalance ?? 'Balance' }
+                > { this.state.subBalance ?  this.state.subBalance + ' ' + this.state.chainData.native_currency.symbol : 'Balance' }
                 </button>
             </li>
             <li className="flex items-center">

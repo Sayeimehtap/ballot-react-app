@@ -3,6 +3,30 @@ import React from "react";
 // components
 
 export default function CardNewBallot() {
+
+  const [inputList, setInputList] = React.useState([{ firstName: "", lastName: "" }]);
+
+  // handle input change
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const handleRemoveClick = index => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+
+  // handle click event of the Add button
+  const handleAddClick = () => {
+    setInputList([...inputList, { firstName: "", lastName: "" }]);
+  };
+
+
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
@@ -41,6 +65,7 @@ export default function CardNewBallot() {
                 </div>
               </div>
             </div>
+           
 
             <div className="flex flex-wrap">
               <div className="w-full lg:w-12/12 px-4">
@@ -58,43 +83,17 @@ export default function CardNewBallot() {
                   />
                 </div>
               </div>
-              <div className="w-full lg:w-12/12 px-4">
+
+              {inputList.map((x, i) => {
+                return (
+
+                  <div className="w-full lg:w-12/12 px-4">
                 <div className="relative w-full mb-3">
                   <label
                     className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                     htmlFor="grid-password"
                   >
-                    Option 2
-                  </label>
-                  <input
-                    type="text"
-                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Green"
-                  />
-                </div>
-              </div>
-              <div className="w-full lg:w-12/12 px-4">
-                <div className="relative w-full mb-3">
-                  <label
-                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    htmlFor="grid-password"
-                  >
-                    Option 3
-                  </label>
-                  <input
-                    type="text"
-                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Purple"
-                  />
-                </div>
-              </div>
-              <div className="w-full lg:w-12/12 px-4">
-                <div className="relative w-full mb-3">
-                  <label
-                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    htmlFor="grid-password"
-                  >
-                    Option 4
+                    Option {i + 2}
                   </label>
                   <div className="w-full lg:w-12/12 ">
                     <div className="relative w-full mb-3">
@@ -107,14 +106,19 @@ export default function CardNewBallot() {
                   </div>
                   <div className="w-full lg:w-6/12 ">
                     <div className="relative w-full mb-3">
-                      <button className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
-                        <i className="fas fa-plus mr-3"></i>
-                        ADD OPTION
-                      </button>
+                    {inputList.length !== 1 && <button className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                      onClick={() => handleRemoveClick(i)}><i className="fas fa-trash"></i></button>}
+                    {inputList.length - 1 === i && <button className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                    onClick={handleAddClick}><i className="fas fa-plus"></i></button>}
+                       
                     </div>
                   </div>
                 </div>
               </div>
+
+
+                );
+              })}
 
             </div>
 
