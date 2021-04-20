@@ -4,13 +4,18 @@ import {Link} from "react-router-dom";
 
 // components
 
-export default function CardBallot({ color }) {
+export default function CardBallot({
+  theme,
+  ownerAddress,
+  proposalDescription
+
+}) {
   return (
     <>
       <div
         className={
           "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
-          (color === "light" ? "bg-white" : "bg-lightBlue-900 text-white")
+          (theme === "light" ? "bg-white" : "bg-lightBlue-900 text-white")
         }
       >
         <div className="rounded-t mb-0 px-4 py-3 border-0">
@@ -19,18 +24,18 @@ export default function CardBallot({ color }) {
               <h3
                 className={
                   "font-semibold text-sm " +
-                  (color === "light" ? "text-blueGray-700" : "text-white")
+                  (theme === "light" ? "text-blueGray-700" : "text-white")
                 }
               >
-                0x213...921D2
+                {ownerAddress}
               </h3>
               <h3
                 className={
                   "font-semibold text-lg " +
-                  (color === "light" ? "text-blueGray-700" : "text-white")
+                  (theme === "light" ? "text-blueGray-700" : "text-white")
                 }
               >
-                Which brand of car should I buy?
+                {proposalDescription}
               </h3>
             </div>
             <div className=" w-full px-6 xl:w-3/12 ">
@@ -53,7 +58,7 @@ export default function CardBallot({ color }) {
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-                    (color === "light"
+                    (theme === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
                   }
@@ -63,7 +68,7 @@ export default function CardBallot({ color }) {
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-                    (color === "light"
+                    (theme === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
                   }
@@ -73,7 +78,7 @@ export default function CardBallot({ color }) {
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-                    (color === "light"
+                    (theme === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
                   }
@@ -93,7 +98,7 @@ export default function CardBallot({ color }) {
                   <span
                     className={
                       "ml-3 font-bold " +
-                      +(color === "light" ? "text-blueGray-600" : "text-white")
+                      +(theme === "light" ? "text-blueGray-600" : "text-white")
                     }
                   >
                     BMW
@@ -126,7 +131,7 @@ export default function CardBallot({ color }) {
                   <span
                     className={
                       "ml-3 font-bold " +
-                      +(color === "light" ? "text-blueGray-600" : "text-white")
+                      +(theme === "light" ? "text-blueGray-600" : "text-white")
                     }
                   >
                     Kia
@@ -159,7 +164,7 @@ export default function CardBallot({ color }) {
                   <span
                     className={
                       "ml-3 font-bold " +
-                      +(color === "light" ? "text-blueGray-600" : "text-white")
+                      +(theme === "light" ? "text-blueGray-600" : "text-white")
                     }
                   >
                     Scoda
@@ -192,7 +197,7 @@ export default function CardBallot({ color }) {
                   <span
                     className={
                       "ml-3 font-bold " +
-                      +(color === "light" ? "text-blueGray-600" : "text-white")
+                      +(theme === "light" ? "text-blueGray-600" : "text-white")
                     }
                   >
                     Renault
@@ -225,7 +230,7 @@ export default function CardBallot({ color }) {
                   <span
                     className={
                       "ml-3 font-bold " +
-                      +(color === "light" ? "text-blueGray-600" : "text-white")
+                      +(theme === "light" ? "text-blueGray-600" : "text-white")
                     }
                   >
                     Mercedes Benz
@@ -257,9 +262,11 @@ export default function CardBallot({ color }) {
 }
 
 CardBallot.defaultProps = {
-  color: "light",
+  theme: "light",
 };
 
 CardBallot.propTypes = {
-  color: PropTypes.oneOf(["light", "dark"]),
+  theme: PropTypes.oneOf(["light", "dark"]),
+  ownerAddress: PropTypes.string,
+  proposalDescription: PropTypes.string,
 };

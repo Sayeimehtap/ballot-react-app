@@ -65,18 +65,28 @@ export default function Ballots() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap my-12">
         <div className="w-full xl:w-6/12 mb-12 xl:mb-0 px-4">
-          <CardBallot color="dark" />
+          <CardBallot
+            theme="dark"
+            ownerAddress="0x212...1A312"
+            proposalDescription="Which brand of car should I buy?" />
         </div>
         <div className="w-full xl:w-6/12 mb-12 xl:mb-0 px-4">
-          <CardBallot />
+          <CardBallot
+            ownerAddress="0x0AB2...ABC12"
+            proposalDescription="Which element of earth should I buy?" />
         </div>
         <div className="w-full xl:w-6/12 mb-12 px-4">
-          <CardBallot />
+          <CardBallot
+            ownerAddress="0x23A...1A814"
+            proposalDescription="Which color of car should I buy?" />
         </div>
         <div className="w-full xl:w-6/12 mb-12 px-4">
-          <CardBallot color="dark" />
+          <CardBallot
+            theme="dark"
+            ownerAddress="0xEF23...1AB12"
+            proposalDescription="Which think of my brain should I buy?" />
         </div>
       </div>
     </>
