@@ -44,7 +44,7 @@ class AuthNavbar extends React.Component<any, any> {
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
 
               <li className="flex items-center">
-              <Link to="/app/dashboard" >
+              <Link to="/app/ballots" >
                 <button
                   className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-6 py-3 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                   type="button"

@@ -7,12 +7,13 @@ export default function CardNewBallot() {
   const [inputList, setInputList] = React.useState([{ firstName: "", lastName: "" }]);
 
   // handle input change
+  /*
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
     list[index][name] = value;
     setInputList(list);
-  };
+  };*/
 
   // handle click event of the Remove button
   const handleRemoveClick = index => {

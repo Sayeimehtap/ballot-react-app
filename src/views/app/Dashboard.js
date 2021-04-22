@@ -28,7 +28,6 @@ export default function Dashboard() {
       <div className="flex flex-wrap my-12">
         <div className="w-full xl:w-6/12 mb-12 xl:mb-0 px-4">
           <CardBallot
-            theme="dark"
             ownerAddress="0x212...1A312"
             proposalDescription="Which brand of car should I buy?" />
         </div>
@@ -44,7 +43,6 @@ export default function Dashboard() {
         </div>
         <div className="w-full xl:w-6/12 mb-12 px-4">
           <CardBallot
-            theme="dark"
             ownerAddress="0xEF23...1AB12"
             proposalDescription="Which think of my brain should I buy?" />
         </div>

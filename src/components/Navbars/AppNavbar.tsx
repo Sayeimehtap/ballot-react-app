@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   web3: null,
   provider: null,
   connected: false,
-  chainId: 1,
+  chainId: 43113,
   networkId: 1,
   assets: [],
   showModal: false,
@@ -18,197 +18,21 @@ const INITIAL_STATE = {
 
 const supportedChains = [
   {
-    name: "Ethereum Mainnet",
-    short_name: "eth",
-    chain: "ETH",
-    network: "mainnet",
-    chain_id: 1,
+    name: "Avalanche FUJI",
+    short_name: "avax",
+    chain: "AVAX",
+    network: "testnet",
+    chain_id: 43113,
     network_id: 1,
     rpc_url: "https://mainnet.infura.io/v3/%API_KEY%",
     native_currency: {
-      symbol: "ETH",
-      name: "Ethereum",
-      decimals: "18",
+      symbol: "AVAX",
+      name: "AVAX",
+      decimals: "9",
       contractAddress: "",
       balance: ""
     }
   },
-  {
-    name: "Ethereum Ropsten",
-    short_name: "rop",
-    chain: "ETH",
-    network: "ropsten",
-    chain_id: 3,
-    network_id: 3,
-    rpc_url: "https://ropsten.infura.io/v3/%API_KEY%",
-    native_currency: {
-      symbol: "ETH",
-      name: "Ethereum",
-      decimals: "18",
-      contractAddress: "",
-      balance: ""
-    }
-  },
-  {
-    name: "Ethereum Rinkeby",
-    short_name: "rin",
-    chain: "ETH",
-    network: "rinkeby",
-    chain_id: 4,
-    network_id: 4,
-    rpc_url: "https://rinkeby.infura.io/v3/%API_KEY%",
-    native_currency: {
-      symbol: "ETH",
-      name: "Ethereum",
-      decimals: "18",
-      contractAddress: "",
-      balance: ""
-    }
-  },
-  {
-    name: "Ethereum Görli",
-    short_name: "gor",
-    chain: "ETH",
-    network: "goerli",
-    chain_id: 5,
-    network_id: 5,
-    rpc_url: "https://goerli.infura.io/v3/%API_KEY%",
-    native_currency: {
-      symbol: "ETH",
-      name: "Ethereum",
-      decimals: "18",
-      contractAddress: "",
-      balance: ""
-    }
-  },
-  {
-    name: "RSK Mainnet",
-    short_name: "rsk",
-    chain: "RSK",
-    network: "mainnet",
-    chain_id: 30,
-    network_id: 30,
-    rpc_url: "https://public-node.rsk.co",
-    native_currency: {
-      symbol: "RSK",
-      name: "RSK",
-      decimals: "18",
-      contractAddress: "",
-      balance: ""
-    }
-  },
-  {
-    name: "Ethereum Kovan",
-    short_name: "kov",
-    chain: "ETH",
-    network: "kovan",
-    chain_id: 42,
-    network_id: 42,
-    rpc_url: "https://kovan.infura.io/v3/%API_KEY%",
-    native_currency: {
-      symbol: "ETH",
-      name: "Ethereum",
-      decimals: "18",
-      contractAddress: "",
-      balance: ""
-    }
-  },
-  {
-    name: "Ethereum Classic Mainnet",
-    short_name: "etc",
-    chain: "ETC",
-    network: "mainnet",
-    chain_id: 61,
-    network_id: 1,
-    rpc_url: "https://ethereumclassic.network",
-    native_currency: {
-      symbol: "ETH",
-      name: "Ethereum",
-      decimals: "18",
-      contractAddress: "",
-      balance: ""
-    }
-  },
-  {
-    name: "POA Network Sokol",
-    short_name: "poa",
-    chain: "POA",
-    network: "sokol",
-    chain_id: 77,
-    network_id: 77,
-    rpc_url: "https://sokol.poa.network",
-    native_currency: {
-      symbol: "POA",
-      name: "POA",
-      decimals: "18",
-      contractAddress: "",
-      balance: ""
-    }
-  },
-  {
-    name: "POA Network Core",
-    short_name: "skl",
-    chain: "POA",
-    network: "core",
-    chain_id: 99,
-    network_id: 99,
-    rpc_url: "https://core.poa.network",
-    native_currency: {
-      symbol: "POA",
-      name: "POA",
-      decimals: "18",
-      contractAddress: "",
-      balance: ""
-    }
-  },
-  {
-    name: "xDAI Chain",
-    short_name: "xdai",
-    chain: "POA",
-    network: "dai",
-    chain_id: 100,
-    network_id: 100,
-    rpc_url: "https://dai.poa.network",
-    native_currency: {
-      symbol: "xDAI",
-      name: "xDAI",
-      decimals: "18",
-      contractAddress: "",
-      balance: ""
-    }
-  },
-  {
-    name: "Callisto Mainnet",
-    short_name: "clo",
-    chain: "callisto",
-    network: "mainnet",
-    chain_id: 820,
-    network_id: 1,
-    rpc_url: "https://clo-geth.0xinfra.com/",
-    native_currency: {
-      symbol: "CLO",
-      name: "CLO",
-      decimals: "18",
-      contractAddress: "",
-      balance: ""
-    }
-  },
-  {
-    name: "Binance Smart Chain",
-    short_name: "bsc",
-    chain: "smartchain",
-    network: "mainnet",
-    chain_id: 56,
-    network_id: 56,
-    rpc_url: "https://bsc-dataseed1.defibit.io/",
-    native_currency: {
-      symbol: "BNB",
-      name: "BNB",
-      decimals: "18",
-      contractAddress: "",
-      balance: ""
-    }
-  }
 ];
 
 function initWeb3(provider: any) {
@@ -228,58 +52,66 @@ function initWeb3(provider: any) {
 }
 
 class AppNavbar extends React.Component<any, any> {
-    // @ts-ignore
-    public web3Modal: Web3Modal;
-    public state: any;
+  // @ts-ignore
+  public web3Modal: Web3Modal;
+  public state: any;
+  public showBalance: boolean;
+  public showAlert: boolean;
 
-    constructor(props: any) {
-      super(props);
-      this.state = {
-        ...INITIAL_STATE
-      };
-  
-      this.web3Modal = new Web3Modal({
-        network: this.getNetwork(),
-        cacheProvider: true,
-        providerOptions: this.getProviderOptions()
-      });
-    }
-  
-    public componentDidMount() {
-      if (this.web3Modal.cachedProvider) {
-        this.onConnect();
-      }
-    }
+  constructor(props: any) {
+    super(props);
+    this.showBalance = false;
+    this.showAlert = false;
+    this.state = {
+      ...INITIAL_STATE
+    };
 
-    public onConnect = async () => {
-      const provider = await this.web3Modal.connect();
+    this.web3Modal = new Web3Modal({
+      network: this.getNetwork(),
+      cacheProvider: true,
+      providerOptions: this.getProviderOptions()
+    });
+  }
+
+  public componentDidMount() {
+    if (this.web3Modal.cachedProvider) {
+      this.onConnect();
+    }
+  }
+
+  public onConnect = async () => {
+    const provider = await this.web3Modal.connect();
 
     await this.subscribeProvider(provider);
 
     const web3 = initWeb3(provider);
 
+    const chainId = await web3.eth.getChainId();
+    const networkId = await web3.eth.net.getId();
+    let connected = false;
+
     const accounts = await web3.eth.getAccounts();
 
     const address = accounts[0];
+    const subAddress = `${String(address).slice(0, 5)}...${String(address).slice(-5)}`;
+
     const balance = await web3.eth.getBalance(address);
+    const subBalance = Web3.utils.fromWei(balance, 'ether').slice(0, 6);
 
-    const subBalance = Web3.utils.fromWei(balance, 'ether').slice(0,6);
+    let chainData = supportedChains[0];
 
-    const subAddress = `${String(address).slice(0,5)}...${String(address).slice(-5)}` ;
+    if(chainId === 43113) {
+      connected = true;
 
-    const networkId = await web3.eth.net.getId();
-
-    const chainId = await web3.eth.getChainId();
-
-    const chainData = supportedChains.filter(
-      (chain: any) => chain.chain_id === this.state.chainId
-    )[0];
-
+      chainData = supportedChains.filter(
+        (chain: any) => chain.chain_id === chainId
+      )[0];
+    }
 
     await this.setState({
       web3,
       provider,
-      connected: true,
+      connected,
       address,
       subAddress,
       chainId,
@@ -288,100 +120,161 @@ class AppNavbar extends React.Component<any, any> {
       networkId,
       chainData
     });
+
+
+  }
+
+  public subscribeProvider = async (provider: any) => {
+    if (!provider.on) {
+      return;
     }
+    provider.on("close", () => this.resetApp());
+    provider.on("accountsChanged", async (accounts: string[]) => {
+      try {
+        const { web3 } = this.state;
 
-    public subscribeProvider = async (provider: any) => {
-      if (!provider.on) {
-        return;
+        console.log(web3);
+
+        if (this.state.connected) {
+          const firstAccount = accounts[0];
+          const subAddress = `${String(firstAccount).slice(0, 5)}...${String(firstAccount).slice(-5)}`;
+
+          const balance = await web3.eth.getBalance(firstAccount);
+          const subBalance = Web3.utils.fromWei(balance, 'ether').slice(0, 6);
+
+          await this.setState({ address: accounts[0], subAddress: subAddress, subBalance });
+        }
+
+
+      } catch (error) {
+        console.log(error);
       }
-      provider.on("close", () => this.resetApp());
-      provider.on("accountsChanged", async (accounts: string[]) => {
-        await this.setState({ address: accounts[0] });
-      });
-      provider.on("chainChanged", async (chainId: number) => {
-        const { web3 } = this.state;
-        const networkId = await web3.eth.net.getId();
 
-        const chainData = supportedChains.filter(
-          (chain: any) => chain.chain_id === this.state.chainId
-        )[0];
+    });
+    provider.on("chainChanged", async (pChainId: String) => {
 
-        await this.setState({ chainData, chainId, networkId });
-      });
-  
-      provider.on("networkChanged", async (networkId: number) => {
-        const { web3 } = this.state;
-        const chainId = await web3.eth.chainId();
-        await this.setState({ chainId, networkId });
-      });
-    };
+      try {
+        const {web3} = this.state;
+        let connected = false;
 
-    public getNetwork = () => {
+        console.log(pChainId);
+
+        if (pChainId === '0xa869') {
+          connected = true;
+          const chainId = 43113;
+
+          const networkId = await web3.eth.net.getId();
+
+          const chainData = supportedChains.filter(
+            (chain: any) => chain.chain_id === chainId
+          )[0];
+
+          await this.setState({ chainData, chainId, networkId });
+        }
+
+        await this.setState({ connected });
+      } catch (error) {
+        console.log(error);
+      }
+
+    });
+
+
+  };
+
+  public getNetwork = () => {
+    try {
       const chainData = supportedChains.filter(
         (chain: any) => chain.chain_id === this.state.chainId
       )[0];
-    
+
       if (!chainData) {
         throw new Error("ChainId missing or not supported");
       }
 
       return chainData.network;
+    } catch (error) {
+      console.log(error);
     }
 
-    public getProviderOptions = () => {
-      const providerOptions = {};
-      return providerOptions;
-    };
+  }
 
-    public resetApp = async () => {
-      const { web3 } = this.state;
-      if (web3 && web3.currentProvider && web3.currentProvider.close) {
-        await web3.currentProvider.close();
-      }
-      await this.web3Modal.clearCachedProvider();
-      this.setState({ ...INITIAL_STATE });
-    };
+  public getProviderOptions = () => {
+    const providerOptions = {};
+    return providerOptions;
+  };
 
-    public render() {
-  return (
-    <>
-      {/* Navbar */}
-      <nav className="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
-        <div className="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
+  public resetApp = async () => {
+    const { web3 } = this.state;
+    if (web3 && web3.currentProvider && web3.currentProvider.close) {
+      await web3.currentProvider.close();
+    }
+    await this.web3Modal.clearCachedProvider();
+    this.setState({ ...INITIAL_STATE });
+  };
 
-          <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+  public render() {
+
+    return (
+      <>
+        {/* Navbar */}
+
+        {!this.state.connected ? (
+          <div
+            className="text-white px-6 py-5 border-0 relative mb-4 bg-pink-500"
+          >
+            <span className="text-sm inline-block mr-5 align-middle">
+              <i className="fas fa-bell mr-3" />
+            </span>
+            <span className="inline-block align-middle mr-8">
+              To connect Ballot App, please select Avalanche Fuji Testnet!
+          </span>
+          </div>
+        ) : null}
+
+        <nav className="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
 
 
-            <li className="flex items-center">
-                <button
-                  className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                  type="button"
-                > { this.state.chainData?.name ?? 'No Network' }
-                </button>
-            </li>
+          <div className="w-full mx-autp items-center flex justify-end md:flex-nowrap flex-wrap md:px-10 px-4">
 
-            <li className="flex items-center">
-                <button
-                  className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                  type="button"
-                > { this.state.subBalance ?  this.state.subBalance + ' ' + this.state.chainData.native_currency.symbol : 'Balance' }
-                </button>
-            </li>
-            <li className="flex items-center">
+            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+
+              {this.state.connected ? (
+                <li className="flex items-center">
+                  <button
+                    className="bg-indigo-500 text-blueGray-200 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                    type="button"
+                  > {this.state.chainData?.name ?? 'No Network'}
+                  </button>
+                </li>
+              ) : null}
+
+              {this.state.connected ? (
+                <li className="flex items-center">
+                  <button
+                    className="bg-indigo-500 text-blueGray-200 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                    type="button"
+                  > {this.state.subBalance + ' ' + this.state.chainData.native_currency.symbol}
+                  </button>
+                </li>
+              ) : null}
+
+
+              <li className="flex items-center">
                 <button
                   onClick={this.onConnect}
-                  className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                  className="bg-indigo-500 text-blueGray-200 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                   type="button"
-                > { this.state.subAddress ?? 'Connect to a wallet' }
+                > {this.state.connected ? this.state.subAddress : 'Connect to a wallet'}
                 </button>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      {/* End Navbar */}
-    </>
-  );
-}
+              </li>
+            </ul>
+          </div>
+        </nav>
+        {/* End Navbar */}
+      </>
+    );
+  }
 }
 
 export default AppNavbar;

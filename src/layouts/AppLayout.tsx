@@ -35,7 +35,7 @@ class AppLayout extends React.Component<any, any> {
               <Route path="/app/new-ballot" exact component={NewBallot} />
               <Route path="/app/settings" exact component={Settings} />
               <Route path="/app/tables" exact component={Tables} />
-              <Redirect from="/app" to="/app/dashboard" />
+              <Redirect from="/app" to="/app/ballots" />
             </Switch>
             <FooterApp />
           </div>
