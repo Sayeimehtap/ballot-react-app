@@ -13,7 +13,7 @@ class FooterApp extends React.Component<any, any> {
               <ul className="flex flex-wrap list-none md:justify-end  justify-center">
                 <li>
                   <a
-                    href="https://www.creative-tim.com?ref=nr-footer-admin"
+                    href=""
                     className="text-blueGray-500 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
                 Copyright © {new Date().getFullYear()}{" "}
@@ -21,7 +21,7 @@ class FooterApp extends React.Component<any, any> {
                 </li>
                 <li>
                   <a
-                    href="https://www.creative-tim.com?ref=nr-footer-admin"
+                    href=""
                     className="text-blueGray-500 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
                     Ballot App

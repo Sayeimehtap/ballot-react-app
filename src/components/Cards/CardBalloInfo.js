@@ -85,6 +85,7 @@ export default function CardBallot({ color }) {
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
                   }
                 ></th>
+                
               </tr>
             </thead>
             <tbody>

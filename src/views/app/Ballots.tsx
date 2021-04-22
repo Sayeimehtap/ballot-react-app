@@ -1,11 +1,19 @@
 import React from "react";
+import Web3 from "web3";
 
 // components
 
-import CardBallot from "./../../components/Cards/CardBallot";
-import CardStats from "./../../components/Cards/CardStats";
+import CardBallot from "../../components/Cards/CardBallot";
+import CardStats from "../../components/Cards/CardStats";
 
-export default function Ballots() {
+
+class Ballots extends React.Component<any, any> {
+ render() {
+  const web3: Web3 = window.web3;
+
+
+  console.log(web3);
+
   return (
     <>
       <div className="relative md:pt-16 pb-16 pt-16">
@@ -95,3 +103,6 @@ export default function Ballots() {
     </>
   );
 }
+}
+
+export default Ballots;
