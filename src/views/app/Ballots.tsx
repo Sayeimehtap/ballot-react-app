@@ -15,13 +15,13 @@ class Ballots extends React.Component<any, any> {
 		super(props);
 		this.state = {
 			ballots: [],
-			length: Number,
+			length: 0,
 		}
 	}
 
 	async componentDidMount() {
 		try {
-			const web3: Web3 = window.web3;
+			const web3: Web3 = new Web3(window.ethereum);
 
 			const contract = new web3.eth.Contract(ABI, contractAddress);
 
@@ -31,13 +31,23 @@ class Ballots extends React.Component<any, any> {
 
 			for (let index = 0; index < length; index++) {
 				const ballot: any[] = await contract.methods.getBallot(index).call();
+				const candidates = [];
+				for (let j = 0; j < ballot[1].length; j++) {
+					candidates.push({
+						id: ballot[1][j],
+						name: ballot[2][j],
+						vote: ballot[3][j]
+					})
+				}
 				ballots.push(
 					<div className="w-full xl:w-6/12 mb-12 xl:mb-0 px-4">
 						<CardBallot
+							id={index}
 							key={index}
 							theme="dark"
 							ownerAddress="0x212...1A312"
 							proposal={ballot[0]}
+							candidates={candidates}
 							 />
 					</div>
 				);
@@ -65,8 +75,9 @@ class Ballots extends React.Component<any, any> {
 							<div className="flex flex-wrap">
 								<div className="w-full lg:w-6/12 xl:w-3/12 px-4">
 									<CardStats
+										key={1}
 										statSubtitle="BALLOTS NUMBER"
-										statTitle={this.state.length}
+										statTitle={this.state.length.toString()}
 										statArrow="up"
 										statPercent="3.48"
 										statPercentColor="text-emerald-500"
@@ -77,6 +88,7 @@ class Ballots extends React.Component<any, any> {
 								</div>
 								<div className="w-full lg:w-6/12 xl:w-3/12 px-4">
 									<CardStats
+										key={2}
 										statSubtitle="Blockchain Number"
 										statTitle="1"
 										statArrow="up"
