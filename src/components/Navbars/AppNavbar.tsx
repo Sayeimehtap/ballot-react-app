@@ -387,6 +387,7 @@ class AppNavbar extends React.Component<any, any> {
     const accounts = await web3.eth.getAccounts();
 
     const address = accounts[0];
+    web3.eth.defaultAccount = address;
     const subAddress = `${String(address).slice(0, 5)}...${String(address).slice(-5)}`;
 
     const balance = await web3.eth.getBalance(address);
@@ -417,6 +418,8 @@ class AppNavbar extends React.Component<any, any> {
 
     window.web3 = web3;
 
+    console.log(web3.eth.defaultAccount);
+
   }
 
   public subscribeProvider = async (provider: any) => {
@@ -428,11 +431,11 @@ class AppNavbar extends React.Component<any, any> {
       try {
         const { web3 } = this.state;
 
-        console.log(web3);
-
         if (this.state.connected) {
           const firstAccount = accounts[0];
           const subAddress = `${String(firstAccount).slice(0, 5)}...${String(firstAccount).slice(-5)}`;
+
+          web3.eth.defaultAccount = firstAccount;
 
           const balance = await web3.eth.getBalance(firstAccount);
           const subBalance = Web3.utils.fromWei(balance, 'ether').slice(0, 6);
@@ -451,8 +454,6 @@ class AppNavbar extends React.Component<any, any> {
       try {
         const { web3 } = this.state;
         let connected = false;
-
-        console.log(pChainId);
 
         if (pChainId === '0xa869') {
           connected = true;

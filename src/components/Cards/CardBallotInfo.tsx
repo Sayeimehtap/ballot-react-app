@@ -21,7 +21,7 @@ export default class CardBallotInfo extends React.Component<{
   }
 
   render() {
-    const allVotes = this.props.candidates.map(item => item.vote).reduce((a, b) => a + b, 0);
+    const allVotes = this.props.candidates.map(item => Number(item.vote)).reduce((a, b) => a + b, 0);
     return (
       <>
         <div
@@ -122,10 +122,14 @@ export default class CardBallotInfo extends React.Component<{
                                 const web3 = new Web3(window.ethereum);
 
                                 web3.eth.handleRevert = true;
+
+                                const accounts = await web3.eth.getAccounts();
+
+                                const address = accounts[0];
                   
                                 const contract = new web3.eth.Contract(ABI, contractAddress);
                       
-                                await contract.methods.voteBallot(this.props.id, item.id).send({from: '0x700137B458995ef4A0CeAA22E03E56A8D8eF0814'});
+                                await contract.methods.voteBallot(this.props.id, item.id).send({from: address});
 
                                 window.location.reload();
                               }}

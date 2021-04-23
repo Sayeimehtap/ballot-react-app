@@ -22,7 +22,7 @@ export default class CardBallot extends React.Component<{
   }
 
   render() {
-    const allVotes = this.props.candidates.map(item => item.vote).reduce((a, b) => a + b, 0);
+    const allVotes = this.props.candidates.map(item => Number(item.vote)).reduce((a, b) => a + b, 0);
     return (
       <>
         <div
@@ -125,11 +125,11 @@ export default class CardBallot extends React.Component<{
                 </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <div className="flex items-center">
-                          <span className="mr-2">{allVotes!=0? item.vote/allVotes + '%': '0%'}</span>
+                          <span className="mr-2">{allVotes!=0? (item.vote/allVotes) * 100 + '%': '0%'}</span>
                           <div className="relative w-full">
                             <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
                               <div
-                                style={{ width: allVotes!=0? item.vote/allVotes + '%': '0%' }}
+                                style={{ width: allVotes!=0? (item.vote/allVotes) * 100 + '%': '0%' }}
                                 className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
                               ></div>
                             </div>
