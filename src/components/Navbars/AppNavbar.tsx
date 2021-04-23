@@ -4,289 +4,291 @@ import { AbiItem } from "web3-utils";
 import Web3Modal from "web3modal";
 
 const ABI: AbiItem[] = [
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "allBallots",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "allBallotsLength",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "ballotCount",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function" 
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "ballotLookup",
-		"outputs": [
-			{
-				"internalType": "contract Ballot",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view" ,
-		"type": "function" 
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_proposal",
-				"type": "string"
-			},
-			{
-				"internalType": "string[]",
-				"name": "_candidate",
-				"type": "string[]"
-			}
-		],
-		"name": "createBallot",
-		"outputs": [],
-		"stateMutability": "nonpayable" ,
-		"type": "function" 
-	},
-	{
-		"inputs": [],
-		"name": "getAddresses",
-		"outputs": [
-			{
-				"internalType": "address[]",
-				"name": "",
-				"type": "address[]"
-			}
-		],
-		"stateMutability": "view" ,
-		"type": "function" 
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_index",
-				"type": "uint256"
-			}
-		],
-		"name": "getBallot",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			},
-			{
-				"internalType": "string[]",
-				"name": "",
-				"type": "string[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"stateMutability": "view" ,
-		"type": "function" 
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "myaddress",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			}
-		],
-		"name": "getBallotCandidates",
-		"outputs": [
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			},
-			{
-				"internalType": "string[]",
-				"name": "",
-				"type": "string[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"stateMutability": "view" ,
-		"type": "function" 
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "myaddress",
-				"type": "address"
-			}
-		],
-		"name": "getBallots",
-		"outputs": [
-			{
-				"internalType": "string[]",
-				"name": "",
-				"type": "string[]"
-			}
-		],
-		"stateMutability": "view" ,
-		"type": "function" 
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view" ,
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "participants",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view" ,
-		"type": "function" 
-	},
-	{
-		"inputs": [],
-		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable" ,
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable" ,
-		"type": "function" 
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_index",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "candidateId",
-				"type": "uint256"
-			}
-		],
-		"name": "voteBallot",
-		"outputs": [],
-		"stateMutability": "nonpayable" ,
-		"type": "function" 
-	}
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "allBallots",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "allBallotsLength",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "ballotCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "ballotLookup",
+    "outputs": [
+      {
+        "internalType": "contract Ballot",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_proposal",
+        "type": "string"
+      },
+      {
+        "internalType": "string[]",
+        "name": "_candidate",
+        "type": "string[]"
+      }
+    ],
+    "name": "createBallot",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAddresses",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getBallot",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "myaddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getBallotCandidates",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "myaddress",
+        "type": "address"
+      }
+    ],
+    "name": "getBallots",
+    "outputs": [
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "participants",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "candidateId",
+        "type": "uint256"
+      }
+    ],
+    "name": "voteBallot",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
 ];
+
+const contractAddress = "0x4bf2934cc05788e44D966e9F7177D65A079de97F";
 
 const INITIAL_STATE = {
   fetching: false,
@@ -339,7 +341,7 @@ function initWeb3(provider: any) {
 
 class AppNavbar extends React.Component<any, any> {
 
-  
+
   // @ts-ignore
   public web3Modal: Web3Modal;
   public state: any;
@@ -351,7 +353,10 @@ class AppNavbar extends React.Component<any, any> {
     this.showBalance = false;
     this.showAlert = false;
     this.state = {
-      ...INITIAL_STATE
+      ...INITIAL_STATE,
+      ABI,
+      contractAddress,
+
     };
 
     this.web3Modal = new Web3Modal({
@@ -375,8 +380,6 @@ class AppNavbar extends React.Component<any, any> {
 
     const web3 = initWeb3(provider);
 
-    window.web3 = web3;
-
     const chainId = await web3.eth.getChainId();
     const networkId = await web3.eth.net.getId();
     let connected = false;
@@ -391,7 +394,7 @@ class AppNavbar extends React.Component<any, any> {
 
     let chainData = supportedChains[0];
 
-    if(chainId === 43113) {
+    if (chainId === 43113) {
       connected = true;
 
       chainData = supportedChains.filter(
@@ -412,6 +415,7 @@ class AppNavbar extends React.Component<any, any> {
       chainData
     });
 
+    window.web3 = web3;
 
   }
 
@@ -445,7 +449,7 @@ class AppNavbar extends React.Component<any, any> {
     provider.on("chainChanged", async (pChainId: String) => {
 
       try {
-        const {web3} = this.state;
+        const { web3 } = this.state;
         let connected = false;
 
         console.log(pChainId);
@@ -461,6 +465,8 @@ class AppNavbar extends React.Component<any, any> {
           )[0];
 
           await this.setState({ chainData, chainId, networkId });
+
+          window.web3 = web3;
         }
 
         await this.setState({ connected });
@@ -472,20 +478,6 @@ class AppNavbar extends React.Component<any, any> {
 
 
   };
-
-  public a = async () => {
-
-    try {
-      const a = new this.state.web3.eth.Contract(ABI, "0x4bf2934cc05788e44D966e9F7177D65A079de97F");
-
-      const b = await a.methods.getBallot();
-  
-      console.log(b);
-    } catch (error) {
-      console.log(error);
-    }
-
-  }
 
   public getNetwork = () => {
     try {
@@ -547,7 +539,7 @@ class AppNavbar extends React.Component<any, any> {
               {this.state.connected ? (
                 <li className="flex items-center">
                   <button
-                    onClick={this.a}
+                    disabled={true}
                     className="bg-indigo-500 text-blueGray-200 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                     type="button"
                   > {this.state.chainData?.name ?? 'No Network'}
@@ -558,7 +550,8 @@ class AppNavbar extends React.Component<any, any> {
               {this.state.connected ? (
                 <li className="flex items-center">
                   <button
-                    className="bg-indigo-500 text-blueGray-200 active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                    disabled={true}
+                    className="bg-indigo-500 text-blueGray-200  active:bg-blueGray-50 text-xs font-bold uppercase px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                     type="button"
                   > {this.state.subBalance + ' ' + this.state.chainData.native_currency.symbol}
                   </button>

@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 export default function CardBallot({
   theme,
   ownerAddress,
-  proposalDescription
+  proposal
 
 }) {
   return (
@@ -35,7 +35,7 @@ export default function CardBallot({
                   (theme === "light" ? "text-blueGray-700" : "text-white")
                 }
               >
-                {proposalDescription}
+                {proposal}
               </h3>
             </div>
             <div className=" w-full px-6 xl:w-3/12 ">
