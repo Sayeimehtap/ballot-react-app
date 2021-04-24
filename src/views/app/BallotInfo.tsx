@@ -14,6 +14,7 @@ class BallotInfo extends React.Component<any, any> {
 		this.state = {
 			id: this.props.match.params.id,
       proposal: "",
+      ownerAddress: "",
       candidates: [],
 		}
 	}
@@ -25,6 +26,9 @@ class BallotInfo extends React.Component<any, any> {
 			const contract = new web3.eth.Contract(ABI, contractAddress);
 
 			const ballot = await contract.methods.getBallot(this.state.id).call();
+
+      const ownerAddresses = await contract.methods.getAddresses().call();
+
 				const candidates = [];
 				for (let j = 0; j < ballot[1].length; j++) {
 					candidates.push({
@@ -36,7 +40,8 @@ class BallotInfo extends React.Component<any, any> {
 
 			this.setState({
 				proposal: ballot[0],
-        candidates
+        candidates,
+        ownerAddress: ownerAddresses[this.state.id],
 			});
 		} catch {
 
@@ -136,7 +141,7 @@ class BallotInfo extends React.Component<any, any> {
                       { this.state.proposal }
                     </h3>
                     <div className="text-sm leading-normal mt-0 mb-4 text-blueGray-400 font-bold uppercase">
-                      0x012321424212A12F1267F32423AA3438146572DE21
+                      { this.state.ownerAddress}
                     </div>
                     <div className="block w-full overflow-x-auto">
   

@@ -35,12 +35,9 @@ class MyBallots extends React.Component<any, any> {
 
 			const length = ballotsA.length;
 
-			console.log(length);
-
 			for (let index = 0; index < length; index++) {
 				const ballot: any[] = await contract.methods.getBallot(index).call();
 
-				console.log(ballot);
 				const candidates = [];
 				for (let j = 0; j < ballot[1].length; j++) {
 					candidates.push({

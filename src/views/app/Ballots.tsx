@@ -27,10 +27,15 @@ class Ballots extends React.Component<any, any> {
 
 			const length = await contract.methods.allBallotsLength().call();
 
+			const ownerAddresses = await contract.methods.getAddresses().call();
+
 			const ballots: any[] = [];
 
 			for (let index = 0; index < length; index++) {
 				const ballot: any[] = await contract.methods.getBallot(index).call();
+
+				const subOwnerAddress = `${String(ownerAddresses[index]).slice(0, 6)}...${String(ownerAddresses[index]).slice(-5)}`;
+
 				const candidates = [];
 				for (let j = 0; j < ballot[1].length; j++) {
 					candidates.push({
@@ -45,7 +50,7 @@ class Ballots extends React.Component<any, any> {
 							id={index}
 							key={index}
 							theme="dark"
-							ownerAddress="0x212...1A312"
+							ownerAddress={subOwnerAddress}
 							proposal={ballot[0]}
 							candidates={candidates}
 							 />
