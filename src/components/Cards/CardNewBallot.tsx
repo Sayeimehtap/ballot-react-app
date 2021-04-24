@@ -1,6 +1,6 @@
 import React from "react";
 import Web3 from "web3";
-import { ABI } from "../Abi/Abi";
+import { ABI, contractAddress } from "../Abi/Abi";
 
 // components
 
@@ -10,8 +10,6 @@ export default function CardNewBallot() {
   const [proposal, setProposal] = React.useState('');
 
   // handle input change
-
-  const contractAddress = "0x4bf2934cc05788e44D966e9F7177D65A079de97F";
 
   const handleInputChange = (e: any, index: any) => {
     const {value } = e.target;
