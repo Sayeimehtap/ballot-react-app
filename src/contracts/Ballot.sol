@@ -3,6 +3,8 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Ballot is Ownable {
+    uint public ballotId;
+    
     string public proposal;
     
     struct Candidate {
@@ -17,13 +19,19 @@ contract Ballot is Ownable {
 
     uint public candidateCount;
     
-    constructor(string memory _proposal, string[] memory _candidate) {
+    
+    constructor(uint _id, string memory _proposal, string[] memory _candidate) {
+        ballotId = _id;
         proposal = _proposal;
         
         for(uint i=0; i< _candidate.length; i++) {
             addCandiate(_candidate[i]);
         }
         
+    }
+    
+    function getId() external view returns (uint) {
+        return ballotId;
     }
     
     function addCandiate(string memory _name) public onlyOwner {
@@ -56,10 +64,10 @@ contract Ballot is Ownable {
         return (ids, names, voteCounts);
     }
 
-    function vote(uint id) external {
-        require (!voterLookup[msg.sender]);
+    function vote(address caller, uint id) public onlyOwner {
+        require (!voterLookup[caller]);
         require (id >= 0 && id <= candidateCount-1);
-        voterLookup[msg.sender] = true;
+        voterLookup[caller] = true;
         candidateLookup[id].voteCount++;
         emit votedEvent(id);
     }

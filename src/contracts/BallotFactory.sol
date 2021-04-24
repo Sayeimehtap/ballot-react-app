@@ -14,10 +14,11 @@ contract BallotFactory is Ownable {
     address[] public allBallots;
     
     function createBallot(string memory _proposal, string[] memory _candidate) public {
-        Ballot b = new Ballot(_proposal, _candidate);
+        Ballot b = new Ballot(allBallots.length, _proposal, _candidate);
         ballotLookup[msg.sender][ballotCount[msg.sender]] = b;
         participants.push(msg.sender);
         allBallots.push(address(b));
+        emit createdEvent(ballotCount[msg.sender]);
         ballotCount[msg.sender]++;
     }
     
@@ -34,17 +35,18 @@ contract BallotFactory is Ownable {
     }
     
     function voteBallot(uint _index, uint candidateId) public {
-        Ballot(allBallots[_index]).vote(candidateId);
+        Ballot(allBallots[_index]).vote(msg.sender, candidateId);
+        emit votedEvent(candidateId);
     }
     
-    function getBallots(address myaddress) external view returns(string[] memory) {
-        string[] memory names = new string[](ballotCount[myaddress]);
+    function getBallots(address myaddress) external view returns(uint[] memory) {
+        uint[] memory ids = new uint[](ballotCount[myaddress]);
         
         for (uint i = 0; i < ballotCount[myaddress]; i++) {
-            names[i] = Ballot(ballotLookup[myaddress][i]).getProposal();
+            ids[i] = Ballot(ballotLookup[myaddress][i]).getId();
         }
         
-        return names;
+        return (ids);
     }
     
     function getBallotCandidates(address myaddress, uint id) external view returns(uint[] memory, string[] memory, uint[] memory) {
@@ -56,5 +58,8 @@ contract BallotFactory is Ownable {
     function getAddresses() external view returns(address[] memory) {
         return participants;
     }
+    
+    event votedEvent(uint indexed id);
+    event createdEvent(uint indexed id);
     
 }
