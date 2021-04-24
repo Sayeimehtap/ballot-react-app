@@ -313,7 +313,7 @@ export const ABI: AbiItem[] =
 
 	];
 
-export const contractAddress = "0x0eB03164466BD90afccBadDaA3486d92418022d0"
-//export const contractAddress = "0x052f0f17347Db41C103508aa7EF1Ed95b5d9aD14"
+//export const contractAddress = "0x0eB03164466BD90afccBadDaA3486d92418022d0"
+export const contractAddress = "0x052f0f17347Db41C103508aa7EF1Ed95b5d9aD14"
 //export const contractAddress = "0xbe9568808439b583e865995eaf7A42Cb634B774d"
 //export const contractAddress = "0x4bf2934cc05788e44D966e9F7177D65A079de97F";
