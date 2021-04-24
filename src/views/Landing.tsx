@@ -226,12 +226,26 @@ class Landing extends React.Component<any, any> {
                         <div className="flex items-center">
                           <div>
                             <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-lightBlue-600 bg-lightBlue-200 mr-3">
-                              <i className="far fa-address-card"></i>
+                              <i className="fas fa-address-card"></i>
                             </span>
                           </div>
                           <div>
                             <h4 className="text-blueGray-500">
                               Kişi dilerse oluşturduğu oylamaya sadece belirlediği adresler katılabilecek
+                          </h4>
+                          </div>
+                        </div>
+                      </li>
+                      <li className="py-2">
+                        <div className="flex items-center">
+                          <div>
+                            <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-lightBlue-600 bg-lightBlue-200 mr-3">
+                              <i className="fas fa-chart-pie"></i>
+                            </span>
+                          </div>
+                          <div>
+                            <h4 className="text-blueGray-500">
+                              Grafiksel analizler ve görsel iyileştirmeler
                           </h4>
                           </div>
                         </div>
