@@ -418,8 +418,6 @@ class AppNavbar extends React.Component<any, any> {
 
     window.web3 = web3;
 
-    console.log(web3.eth.defaultAccount);
-
   }
 
   public subscribeProvider = async (provider: any) => {

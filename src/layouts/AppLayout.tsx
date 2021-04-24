@@ -10,7 +10,7 @@ import FooterApp from "./../components/Footers/FooterApp";
 
 // views
 
-import Dashboard from "./../views/app/Dashboard";
+import MyBallots from "./../views/app/MyBallots";
 import Settings from "./../views/app/Settings";
 import Tables from "./../views/app/Tables";
 import NewBallot from "./../views/app/NewBallot";
@@ -29,7 +29,7 @@ class AppLayout extends React.Component<any, any> {
           <HeaderStats />
           <div className="px-4 md:px-10 mx-auto w-full -m-24">
             <Switch>
-              <Route path="/app/dashboard" exact component={Dashboard} />
+              <Route path="/app/my-ballots" exact component={MyBallots} />
               <Route path="/app/ballots" exact component={Ballots} />
               <Route path="/app/ballots/:id" exact component={BallotInfo} />
               <Route path="/app/new-ballot" exact component={NewBallot} />
