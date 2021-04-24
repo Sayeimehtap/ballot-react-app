@@ -11,6 +11,7 @@ export default class CardBallotInfo extends React.Component<{
   candidates: any[],
 }, {}> {
 
+  // eslint-disable-next-line 
   constructor(props: {
     theme: any,
     ownerAddress: any,

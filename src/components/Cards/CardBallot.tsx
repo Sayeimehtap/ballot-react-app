@@ -11,6 +11,7 @@ export default class CardBallot extends React.Component<{
   id: any
 }, {}> {
 
+  // eslint-disable-next-line 
   constructor(props: {
     theme: any,
     ownerAddress: any,
