@@ -97,7 +97,7 @@ export default class CardBallotInfo extends React.Component<{
                           {item.name}
                         </span>
                       </th>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 mr-7">
                         {item.vote}
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -113,8 +113,7 @@ export default class CardBallotInfo extends React.Component<{
                           </div>
                         </div>
                       </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <div className=" w-full px-6 xl:w-3/12 ">
+                      <td className="border-t-0 px-6 align-left border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                             <button
                               className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                               type="button"
@@ -143,7 +142,6 @@ export default class CardBallotInfo extends React.Component<{
                             >
                               Vote
                           </button>
-                        </div>
                       </td>
                     </tr>
 

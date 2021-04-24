@@ -29,15 +29,18 @@ class MyBallots extends React.Component<any, any> {
 
 			const address = accounts[0];
 
-			const ballotsA: any[] = await contract.methods.getBallots(address).call();
+			const ballotsIds: any[] = await contract.methods.getBallots(address).call();
 
 			const ballots: any[] = [];
 
-			const length = ballotsA.length;
+			const ownerAddresses = await contract.methods.getAddresses().call();
+
+			const length = ballotsIds.length;
 
 			for (let index = 0; index < length; index++) {
-				const ballot: any[] = await contract.methods.getBallot(index).call();
+				const ballot: any[] = await contract.methods.getBallot(ballotsIds[index]).call();
 
+				const subOwnerAddress = `${String(ownerAddresses[ballotsIds[index]]).slice(0, 6)}...${String(ownerAddresses[ballotsIds[index]]).slice(-5)}`;
 				const candidates = [];
 				for (let j = 0; j < ballot[1].length; j++) {
 					candidates.push({
@@ -49,10 +52,10 @@ class MyBallots extends React.Component<any, any> {
 				ballots.push(
 					<div className="w-full xl:w-6/12 mb-12 xl:mb-0 px-4">
 						<CardBallot
-							id={index}
+							id={ballotsIds[index]}
 							key={index}
 							theme="light"
-							ownerAddress="0x212...1A312"
+							ownerAddress={subOwnerAddress}
 							proposal={ballot[0]}
 							candidates={candidates}
 						/>
