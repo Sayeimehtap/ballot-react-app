@@ -97,7 +97,7 @@ class BallotInfo extends React.Component<any, any> {
                           width="400"
                           height="auto"
                           alt="..."
-                          src={require("./../../assets/img/account-r.png").default}
+                          src={require("./../../assets/img/voting.png").default}
                           className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                         />
                       </div>
@@ -148,7 +148,7 @@ class BallotInfo extends React.Component<any, any> {
                       <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
                         <CardBallotInfo
                           id={this.state.id}
-                          theme="dark"
+                          theme="light"
                           ownerAddress="0x212...1A312"
                           candidates={this.state.candidates}
                         />
