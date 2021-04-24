@@ -16,7 +16,7 @@ class NewBallot extends React.Component<any, any> {
     return (
       <>
         <div className="flex flex-wrap">
-          <div className="w-full lg:w-6/12 px-4">
+          <div className="w-full lg:w-6/12 mx-auto mt-16 px-4">
             <CardNewBallot
              />
           </div>
