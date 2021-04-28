@@ -16,14 +16,14 @@ contract Ballot is Ownable {
     using SafeMath for uint256;
     
     
-    uint32 private ballotID;
-    uint private optionCount;
-    address private creator;
-    string private proposal;
-    uint32 private startTime;
-    uint32 private endTime;
-    address[] private whitelistedAddresses;
-    State private lastState;
+    uint32 ballotID;
+    uint optionCount;
+    address creator;
+    string proposal;
+    uint32 startTime;
+    uint32 endTime;
+    address[] whitelistedAddresses;
+    State lastState;
     
     struct Option {
     uint id;
