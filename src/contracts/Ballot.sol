@@ -1,76 +1,92 @@
-pragma solidity ^0.8.0;
+// SPDX-License-Identifier: MIT
+pragma solidity >= 0.8.1;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "./Ownable.sol";
+import "./SafeMath8.sol";
+import "./SafeMath16.sol";
+import "./SafeMath32.sol";
+import "./SafeMath.sol";
+
 
 contract Ballot is Ownable {
-    uint public ballotId;
     
-    string public proposal;
-    
-    struct Candidate {
-        uint id;
-        string name;
-        uint voteCount;
-    }
-    
-    mapping(uint => Candidate) public candidateLookup;
-    
-    mapping(address => bool) public voterLookup;
-
-    uint public candidateCount;
+    using SafeMath8 for uint8;
+    using SafeMath16 for uint16;
+    using SafeMath32 for uint32;
+    using SafeMath for uint256;
     
     
-    constructor(uint _id, string memory _proposal, string[] memory _candidate) {
-        ballotId = _id;
-        proposal = _proposal;
-        
-        for(uint i=0; i< _candidate.length; i++) {
-            addCandiate(_candidate[i]);
-        }
-        
-    }
+    uint32 private ballotID;
+    uint private optionCount;
+    address private creator;
+    string private proposal;
+    uint32 private startTime;
+    uint32 private endTime;
+    address[] private whitelistedAddresses;
+    State private lastState;
     
-    function getId() external view returns (uint) {
-        return ballotId;
-    }
-    
-    function addCandiate(string memory _name) public onlyOwner {
-        candidateLookup[candidateCount] = Candidate(candidateCount, _name, 0);
-        candidateCount++;
-    }
-    
-    function setProposal(string memory _proposal ) public onlyOwner {
-        proposal = _proposal;
-    }
-    
-    function getCandidate(uint id) external view returns (string memory name, uint voteCount) {
-        name = candidateLookup[id].name;
-        voteCount = candidateLookup[id].voteCount;
-    }
-    
-    function getProposal() external view returns(string memory) {
-        return proposal;
-    }
-    
-    function getCandidates() external view returns (uint[] memory, string[] memory, uint[] memory) {
-        uint[] memory ids = new uint[](candidateCount);
-        string[] memory names = new string[](candidateCount);
-        uint[] memory voteCounts = new uint[](candidateCount);
-        for (uint i = 0; i < candidateCount; i++) {
-            ids[i] = candidateLookup[i].id;
-            names[i] = candidateLookup[i].name;
-            voteCounts[i] = candidateLookup[i].voteCount;
-        }
-        return (ids, names, voteCounts);
+    struct Option {
+    uint id;
+    string name;
+    uint voteCount;
     }
 
-    function vote(address caller, uint id) public onlyOwner {
-        require (!voterLookup[caller]);
-        require (id >= 0 && id <= candidateCount-1);
-        voterLookup[caller] = true;
-        candidateLookup[id].voteCount++;
-        emit votedEvent(id);
+    struct voter{
+        address voterID; // wallet address
+        bool voted;
+    }
+    
+    enum State {Created, NotStarted, Ongoing, Ended }
+	State public state;
+	
+
+    mapping(address => voter) public voterLookup;
+    mapping(uint => Option) public optionLookup;
+    
+    
+
+    constructor (uint32 _ballotID, string  memory _proposal, uint32  _startTime, uint32  _endTime, string[] memory _options) public
+    {
+        ballotID = _ballotID;
+        lastState = State.Created;
+        creator = msg.sender;
+        proposal = _proposal;
+        optionCount = _options.length;
+        for (uint i = 0; i <= optionCount; i.add(1)) {
+            addOption(_options[i]);
+        }
     }
     
     event votedEvent(uint indexed id);
+
+    function addOption(string memory name) internal {
+        optionLookup[optionCount] = Option(optionCount, name, 0);
+        optionCount.add(1); 
+    }
+
+    function getOption(uint id) external view returns (string memory name, uint voteCount) {
+         name = optionLookup[id].name;
+         voteCount = optionLookup[id].voteCount;
+     }
+
+    function getOptions() external view returns (string[] memory, uint[] memory) {
+        string[] memory names = new string[](optionCount);
+        uint[] memory voteCounts = new uint[](optionCount);
+        for (uint i = 0; i < optionCount; i.add(1)) {
+            names[i] = optionLookup[i].name;
+            voteCounts[i] = optionLookup[i].voteCount;
+        }
+        return (names, voteCounts);
+    }
+
+    function doVote(uint id) external {
+        require (block.timestamp <= endTime && block.timestamp > startTime,"Not In Range");
+        require (!voterLookup[msg.sender].voted,"Already Voted");
+        require (id >= 0 && id <= optionCount.sub(1),"Not In Range");
+        optionLookup[id].voteCount.add(1);
+        voterLookup[msg.sender].voted == true;
+        emit votedEvent(id);
+    }
+
+    
 }
