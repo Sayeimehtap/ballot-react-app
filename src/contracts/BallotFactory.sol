@@ -20,4 +20,8 @@ contract BallotFactory is Ownable{
         emit BallotCreated(ballot);
     }
     
+    function getBallot(uint32 _id) external view returns (Ballot) {
+    return ballots[id];
+    }
+    
 }
